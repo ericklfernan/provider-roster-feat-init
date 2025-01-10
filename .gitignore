@@ -1,5 +1,23 @@
-# Object file
-*.o
+### Scala ###
+*.class
+*.log
 
-# Ada Library Information
-*.ali
+# VSCode/Metals
+.bloop
+.metals
+.vscode
+metals.sbt
+
+# Scala build support
+.bsp/
+
+# Scala build output
+target/
+
+# Test output
+test_output/
+test_dlq/
+test_processed/
+
+# Private stuff
+private/
