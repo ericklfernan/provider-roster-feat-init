@@ -84,12 +84,17 @@
         -   d. output_paths (contains the location of the output json files) 
     -   src/main/resources/transformation-dev.conf
         - defines the transformation logic to join the provider with the visit data
-        - uses CTEs to handle the joining, aggregation and transformation logics to match the required JSON structure 
-
+        - uses CTEs to handle the joining, aggregation and transformation logics to match the required JSON structure
+    - another version of the solution is to simply create multiple folders representing the individual partitions.
+        - This will be more efficient instead of a single json file
+        - i.e., xxxxx_df.repartition("provider_specialty").mode("overwrite").write.partitionBy("provider_specialty").json("/output/answet_to_question_1")
+ 
 2. Added "com.typesafe" % "config" % "1.4.2" on build.sbt to simplify the parsing of conf files
 3. Implemented logging, i.e. import org.slf4j.LoggerFactory
 4. Imeplemented try, catch, finally
 5. Method testing not implemented
+6. Checkpointing not implemented since this is not a continuous file processing nor a continuous real time event
+7. The output files were strictly formatted based on the description mentioned in the requirement 
 
 
 <hr style="page-break-after: always;">
